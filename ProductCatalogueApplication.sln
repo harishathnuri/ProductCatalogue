@@ -5,7 +5,12 @@ VisualStudioVersion = 16.0.29519.87
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductCatalogue.Api", "ProductCatalogue.Api\ProductCatalogue.Api.csproj", "{529176B5-F038-4745-A9B8-E87E9D226F6C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductCatalogue.IntegrationTests", "ProductCatalogue.IntegrationTests\ProductCatalogue.IntegrationTests.csproj", "{E8271054-496E-4988-AED8-0A90753A6993}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductCatalogue.IntegrationTests", "ProductCatalogue.IntegrationTests\ProductCatalogue.IntegrationTests.csproj", "{E8271054-496E-4988-AED8-0A90753A6993}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5151FCF7-34C2-4380-88E6-BBDF2F8CBB20}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
