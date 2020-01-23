@@ -1,7 +1,7 @@
 ﻿using ProductCatalogue.Api.Models;
 using System;
 
-namespace ProductCatalogue.IntegrationTests
+namespace ProductCatalogue.IntegrationTests.Helpers
 {
     public class ProductOptionBuilder
     {

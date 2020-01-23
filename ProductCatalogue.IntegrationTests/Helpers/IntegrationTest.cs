@@ -13,7 +13,7 @@ using ProductCatalogue.Api.ViewModels.Requests;
 using System.Diagnostics;
 using System.Collections.Generic;
 
-namespace ProductCatalogue.IntegrationTests
+namespace ProductCatalogue.IntegrationTests.Helpers
 {
     public class IntegrationTest : IDisposable
     {

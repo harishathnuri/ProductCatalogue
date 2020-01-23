@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace ProductCatalogue.IntegrationTests
+namespace ProductCatalogue.IntegrationTests.Helpers
 {
     public class ProductBuilder
     {

@@ -3,6 +3,7 @@ using NUnit.Framework;
 using ProductCatalogue.Api.Models;
 using ProductCatalogue.Api.ViewModels;
 using ProductCatalogue.Api.ViewModels.Responses;
+using ProductCatalogue.IntegrationTests.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Net;

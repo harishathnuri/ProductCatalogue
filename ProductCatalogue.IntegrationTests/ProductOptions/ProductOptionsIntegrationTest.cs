@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using ProductCatalogue.Api.Models;
+using ProductCatalogue.IntegrationTests.Helpers;
 using System.Collections.Generic;
 
 namespace ProductCatalogue.IntegrationTests.ProductOptions

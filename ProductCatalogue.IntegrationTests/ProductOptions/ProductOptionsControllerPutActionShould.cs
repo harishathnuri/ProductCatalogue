@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using ProductCatalogue.Api.ViewModels;
 using ProductCatalogue.Api.ViewModels.Requests;
+using ProductCatalogue.IntegrationTests.Helpers;
 using System;
 using System.Net;
 using System.Net.Http;
@@ -11,7 +12,6 @@ namespace ProductCatalogue.IntegrationTests.ProductOptions
 {
     public class ProductOptionsControllerPutActionShould : ProductOptionsIntegrationTest
     {
-
         [Test]
         public async Task UpdateExistingProductOption()
         {

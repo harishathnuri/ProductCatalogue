@@ -1,4 +1,4 @@
-﻿namespace ProductCatalogue.IntegrationTests
+﻿namespace ProductCatalogue.IntegrationTests.Helpers
 {
     public static class Constansts
     {

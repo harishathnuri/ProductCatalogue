@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
 using ProductCatalogue.Api.ViewModels;
+using ProductCatalogue.IntegrationTests.Helpers;
 using System;
 using System.Net;
 using System.Threading.Tasks;
