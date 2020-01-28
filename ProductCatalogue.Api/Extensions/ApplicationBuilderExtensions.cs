@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
+using ProductCatalogue.Api.Middleware;
 using ProductCatalogue.Api.Options;
 using System;
 
@@ -22,22 +20,19 @@ namespace ProductCatalogue.Api.Extensions
             });
         }
 
-        public static void UseCustomExceptionHandler(this IApplicationBuilder app, ILogger logger)
+        public static IApplicationBuilder UseCustomExceptionHandler(this IApplicationBuilder builder)
         {
-            app.UseExceptionHandler(appBuilder =>
-            {
-                appBuilder.Run(async context =>
-                {
-                    // log the exception
-                    var exceptionFeature = context.Features.Get<IExceptionHandlerPathFeature>();
-                    var routeWhereExceptionOccurred = exceptionFeature.Path;
-                    var exceptionThatOccurred = exceptionFeature.Error;
-                    logger.LogError(exceptionThatOccurred, "unhandled exception");
+            var options = new ExceptionOptions();
+            return builder.UseMiddleware<ExceptionMiddleware>(options);
+        }
 
-                    context.Response.StatusCode = 500;
-                    await context.Response.WriteAsync("An expected fault happened. Try again later.");
-                });
-            });
+        public static IApplicationBuilder UseCustomExceptionHandler(this IApplicationBuilder builder,
+            Action<ExceptionOptions> configureOptions)
+        {
+            var options = new ExceptionOptions();
+            configureOptions(options);
+
+            return builder.UseMiddleware<ExceptionMiddleware>(options);
         }
     }
 }
