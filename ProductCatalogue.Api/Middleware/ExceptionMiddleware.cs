@@ -42,9 +42,7 @@ namespace ProductCatalogue.Api.Middleware
 
         Task HandleExceptionAsync(HttpContext context, Exception exception)
         {
-            
-
-            var fault = new FaultModel
+           var fault = new FaultModel
             {
                 Id = Guid.NewGuid().ToString(),
                 Status = (short)HttpStatusCode.InternalServerError,

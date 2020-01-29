@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using ProductCatalogue.Api.Filters;
 using ProductCatalogue.Api.Models;
 using ProductCatalogue.Api.Services;
 using ProductCatalogue.Api.ViewModels;
@@ -14,6 +15,7 @@ using System.Collections.Generic;
 namespace ProductCatalogue.Api.Controllers
 {
     [ApiController]
+    [TypeFilter(typeof(ExceptionHandlerFilter))]
     public class ProductsController : ControllerBase
     {
         private readonly IProductRepository _productRepository;
@@ -27,7 +29,8 @@ namespace ProductCatalogue.Api.Controllers
                  throw new ArgumentNullException(nameof(repository));
             _mapper = mapper ??
                 throw new ArgumentNullException(nameof(mapper));
-            _logger = logger;
+            _logger = logger ??
+                throw new ArgumentNullException(nameof(logger));
         }
 
         [HttpGet(ApiRoutes.Products.GetAll)]
@@ -67,7 +70,7 @@ namespace ProductCatalogue.Api.Controllers
         [HttpPost(ApiRoutes.Products.Create)]
         public ActionResult<ProductResponse> CreateProduct(CreateProductRequest productForCreation)
         {
-            _logger.LogDebug($"Start - CreateProduct, params - {productForCreation}");
+            _logger.LogDebug($"Start - CreateProduct, params - {JsonConvert.SerializeObject(productForCreation)}");
 
             var productEntity = _mapper.Map<Product>(productForCreation);
 

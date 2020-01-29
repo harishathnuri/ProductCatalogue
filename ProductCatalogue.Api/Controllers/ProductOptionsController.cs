@@ -14,7 +14,8 @@ using Newtonsoft.Json;
 namespace ProductCatalogue.Api.Controllers
 {
     [ApiController]
-    [TypeFilter(typeof(ValidateProductId))]
+    [TypeFilter(typeof(ExceptionHandlerFilter))]
+    [TypeFilter(typeof(ValidateProductIdFilter))]
     public class ProductsOptionsController : ControllerBase
     {
         private readonly IProductRepository _productRepository;
@@ -24,9 +25,12 @@ namespace ProductCatalogue.Api.Controllers
         public ProductsOptionsController(IProductRepository repository,
             IMapper mapper, ILogger<ProductsOptionsController> logger)
         {
-            _productRepository = repository;
-            _mapper = mapper;
-            _logger = logger;
+            _productRepository = repository ??
+                 throw new ArgumentNullException(nameof(repository));
+            _mapper = mapper ??
+                throw new ArgumentNullException(nameof(mapper));
+            _logger = logger ??
+                throw new ArgumentNullException(nameof(logger));
         }
 
         [HttpGet(ApiRoutes.ProductOptions.GetAll)]
@@ -39,7 +43,7 @@ namespace ProductCatalogue.Api.Controllers
                 _mapper.Map<CollectionResponse<ProductOptionResponse>>(optionForProductFromRepo);
 
             var logReturnMessage = $"productId : {productId} {JsonConvert.SerializeObject(optionForProductToReturn)}";
-            _logger.LogDebug($"Start - GetOptionsForProduct, return - {logReturnMessage}");
+            _logger.LogDebug($"End - GetOptionsForProduct, return - {logReturnMessage}");
 
             return Ok(optionForProductToReturn);
         }
